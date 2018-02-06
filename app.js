@@ -35,7 +35,7 @@ var samlStrategy = new saml.Strategy({
   validateInResponseTo: false,
   disableRequestedAuthnContext: true
 }, function(profile, done) {
-  return done(null, profile); 
+  return done(null, profile);
 });
 
 passport.use(samlStrategy);
@@ -56,7 +56,7 @@ function ensureAuthenticated(req, res, next) {
 }
 
 app.get('/',
-  ensureAuthenticated, 
+  ensureAuthenticated,
   function(req, res) {
     res.send('Authenticated');
   }
@@ -76,13 +76,13 @@ app.post('/login/callback',
   }
 );
 
-app.get('/login/fail', 
+app.get('/login/fail',
   function(req, res) {
     res.status(401).send('Login failed');
   }
 );
 
-app.get('/Shibboleth.sso/Metadata', 
+app.get('/Shibboleth.sso/Metadata',
   function(req, res) {
     res.type('application/xml');
     res.status(200).send(samlStrategy.generateServiceProviderMetadata(fs.readFileSync(__dirname + '/cert/cert.pem', 'utf8')));
@@ -95,7 +95,6 @@ app.use(function(err, req, res, next) {
   next(err);
 });
 
-var server = app.listen(4006, function () {
+var server = app.listen(process.env.PORT, function () {
   console.log('Listening on port %d', server.address().port)
 });
-
