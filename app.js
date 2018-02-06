@@ -11,6 +11,8 @@ var saml = require('passport-saml');
 
 dotenv.load();
 
+console.log(path.resolve(__dirname));
+
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
