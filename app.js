@@ -153,14 +153,14 @@ var samlStrategy = new saml.Strategy({
   issuer: process.env.ISSUER,
   identifierFormat: null,
   // Service Provider private key
-  //decryptionPvk: fs.readFileSync(path.join(path.resolve(__dirname), 'cert/key.pem'), 'utf8'),
-  decryptionPvk: privateCert,
+  decryptionPvk: fs.readFileSync('key.pem'), 'utf8'),
+  //decryptionPvk: privateCert,
   // Service Provider Certificate
-  //privateCert: fs.readFileSync(path.join(path.resolve(__dirname), 'cert/key.pem'), 'utf8'),
-  privateCert: privateCert,
+  privateCert: fs.readFileSync('key.pem'), 'utf8'),
+  //privateCert: privateCert,
   // Identity Provider's public key
-  //cert: fs.readFileSync(path.join(path.resolve(__dirname), 'cert/idp_cert.pem'), 'utf8'),
-  cert: cert,
+  cert: fs.readFileSync('idp_cert.pem'), 'utf8'),
+  //cert: cert,
   validateInResponseTo: false,
   disableRequestedAuthnContext: true
 }, function(profile, done) {
@@ -215,7 +215,8 @@ app.get('/Shibboleth.sso/Metadata',
   function(req, res) {
     res.type('application/xml');
     //res.status(200).send(samlStrategy.generateServiceProviderMetadata(fs.readFileSync(path.join(path.resolve(__dirname), 'cert/cert.pem'), 'utf8')));
-	res.status(200).send(samlStrategy.generateServiceProviderMetadata(cert));
+	//res.status(200).send(samlStrategy.generateServiceProviderMetadata(cert));
+	res.status(200).send(samlStrategy.generateServiceProviderMetadata(fs.readFileSync('cert.pem'), 'utf8'));
   }
 );
 
