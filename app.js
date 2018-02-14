@@ -39,13 +39,13 @@ var samlStrategy = new saml.Strategy({
   issuer: process.env.ISSUER,
   identifierFormat: null,
   // Service Provider private key
-  //decryptionPvk: privateCert,
+  decryptionPvk: privateCert,
   // Service Provider Certificate
-  //privateCert: privateCert,
+  privateCert: privateCert,
   // Identity Provider's public key
   cert: idpCert,
-  //signatureAlgorithm: 'sha256',
-  //authnRequestBinding: 'HTTP-POST',
+  signatureAlgorithm: 'sha256',
+  authnRequestBinding: 'HTTP-POST',
   validateInResponseTo: false,
   disableRequestedAuthnContext: true
 }, function(profile, done) {
