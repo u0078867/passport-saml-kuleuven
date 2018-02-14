@@ -43,7 +43,7 @@ var samlStrategy = new saml.Strategy({
   // Service Provider Certificate
   //privateCert: privateCert,
   // Identity Provider's public key
-  //cert: idpCert,
+  cert: idpCert,
   //signatureAlgorithm: 'sha256',
   //authnRequestBinding: 'HTTP-POST',
   validateInResponseTo: false,
