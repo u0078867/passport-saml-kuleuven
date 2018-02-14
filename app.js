@@ -15,6 +15,7 @@ console.log(process.env);
 
 var privateCert = fs.readFileSync('key.pem', 'utf8');
 console.log(privateCert)
+var privateCert2 = fs.readFileSync('key2.pem', 'utf8').replace(/\r|\s|\n/g, '');
 
 var idpCert = fs.readFileSync('idp_cert.pem', 'utf8').replace(/\r|\s|\n/g, '');
 console.log(idpCert)
@@ -39,7 +40,7 @@ var samlStrategy = new saml.Strategy({
   issuer: process.env.ISSUER,
   identifierFormat: null,
   // Service Provider private key
-  decryptionPvk: privateCert,
+  decryptionPvk: privateCert2,
   // Service Provider Certificate
   privateCert: privateCert,
   // Identity Provider's public key
