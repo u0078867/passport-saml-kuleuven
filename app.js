@@ -40,9 +40,9 @@ var samlStrategy = new saml.Strategy({
   issuer: process.env.ISSUER,
   identifierFormat: null,
   // Service Provider private key
-  decryptionPvk: privateCert2,
+  decryptionPvk: privateCert2,	// SP metadata will not show certificate if decryptionPvk not existing
   // Service Provider Certificate
-  privateCert: privateCert,
+  privateCert: privateCert2,
   // Identity Provider's public key
   cert: idpCert,
   signatureAlgorithm: 'sha256',
