@@ -17,7 +17,8 @@ var privateCert = fs.readFileSync('key.pem', 'utf8');
 console.log(privateCert)
 var privateCert2 = fs.readFileSync('key2.pem', 'utf8').replace(/\r|\s|\n/g, '');
 
-var idpCert = fs.readFileSync('idp_cert.pem', 'utf8').replace(/\r|\s|\n/g, '');
+//var idpCert = fs.readFileSync('idp_cert.pem', 'utf8').replace(/\r|\s|\n/g, '');
+var idpCert = fs.readFileSync('idp_cert.crt', 'utf8');
 console.log(idpCert)
 
 var cert = fs.readFileSync('cert.pem', 'utf8');
@@ -42,7 +43,7 @@ var samlStrategy = new saml.Strategy({
   // Service Provider private key
   decryptionPvk: privateCert2,	// SP metadata will not show certificate if decryptionPvk not existing
   // Service Provider Certificate
-  privateCert: privateCert2,
+  privateCert: privateCert, // needs START END headers
   // Identity Provider's public key
   cert: idpCert,
   signatureAlgorithm: 'sha256',
