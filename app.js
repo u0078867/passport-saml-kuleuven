@@ -39,7 +39,7 @@ var samlStrategy = new saml.Strategy({
   issuer: process.env.ISSUER,
   identifierFormat: null,
   // Service Provider private key
-  //decryptionPvk: privateCert,
+  decryptionPvk: privateCert,
   // Service Provider Certificate
   privateCert: privateCert,
   // Identity Provider's public key
