@@ -16,7 +16,7 @@ console.log(process.env);
 var privateCert = fs.readFileSync('key.pem', 'utf8');
 console.log(privateCert)
 
-var idpCert = fs.readFileSync('idp_cert.pem', 'utf8');
+var idpCert = fs.readFileSync('idp_cert.pem', 'utf8').replace(/\r|\n/g, '');
 console.log(idpCert)
 
 var cert = fs.readFileSync('cert.pem', 'utf8');
@@ -47,7 +47,7 @@ var samlStrategy = new saml.Strategy({
   // Identity Provider's public key
   //cert: fs.readFileSync('idp_cert.pem', 'utf8'),
   cert: idpCert,
-  authnRequestBinding: 'HTTP-POST',
+  //authnRequestBinding: 'HTTP-POST',
   //validateInResponseTo: false,
   //disableRequestedAuthnContext: true
 }, function(profile, done) {
