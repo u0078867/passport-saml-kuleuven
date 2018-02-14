@@ -11,11 +11,16 @@ var saml = require('passport-saml');
 
 dotenv.load();
 
-var privateCert = ``;
+console.log(process.env);
 
-var idp_cert = ``;
+var privateCert = fs.readFileSync('key.pem', 'utf8');
+console.log(privateCert)
 
-var cert = ``;
+var idpCert = fs.readFileSync('idp_cert.pem', 'utf8');
+console.log(idpCert)
+
+var cert = fs.readFileSync('cert.pem', 'utf8');
+console.log(cert)
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -31,17 +36,17 @@ var samlStrategy = new saml.Strategy({
   // URL that goes from the Service Provider -> Identity Provider
   entryPoint: process.env.ENTRY_POINT,
   // Usually specified as `/shibboleth` from site root
-  issuer: process.env.ISSUER,
+  //issuer: process.env.ISSUER,
   identifierFormat: null,
   // Service Provider private key
-  decryptionPvk: fs.readFileSync('key.pem', 'utf8'),
-  //decryptionPvk: privateCert,
+  //decryptionPvk: fs.readFileSync('key.pem', 'utf8'),
+  decryptionPvk: privateCert,
   // Service Provider Certificate
-  privateCert: fs.readFileSync('key.pem', 'utf8'),
-  //privateCert: privateCert,
+  //privateCert: fs.readFileSync('key.pem', 'utf8'),
+  privateCert: privateCert,
   // Identity Provider's public key
-  cert: fs.readFileSync('idp_cert.pem', 'utf8'),
-  //cert: cert,
+  //cert: fs.readFileSync('idp_cert.pem', 'utf8'),
+  cert: idpCert,
   authnRequestBinding: 'HTTP-POST',
   //validateInResponseTo: false,
   //disableRequestedAuthnContext: true
@@ -97,8 +102,8 @@ app.get('/Shibboleth.sso/Metadata',
   function(req, res) {
     res.type('application/xml');
     //res.status(200).send(samlStrategy.generateServiceProviderMetadata(fs.readFileSync(path.join(path.resolve(__dirname), 'cert/cert.pem'), 'utf8')));
-	//res.status(200).send(samlStrategy.generateServiceProviderMetadata(cert));
-	res.status(200).send(samlStrategy.generateServiceProviderMetadata(fs.readFileSync('cert.pem', 'utf8')));
+	res.status(200).send(samlStrategy.generateServiceProviderMetadata(cert));
+	//res.status(200).send(samlStrategy.generateServiceProviderMetadata(fs.readFileSync('cert.pem', 'utf8')));
   }
 );
 
