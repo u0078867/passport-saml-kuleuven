@@ -48,8 +48,8 @@ var samlStrategy = new saml.Strategy({
   //cert: fs.readFileSync('idp_cert.pem', 'utf8'),
   cert: idpCert,
   //authnRequestBinding: 'HTTP-POST',
-  //validateInResponseTo: false,
-  //disableRequestedAuthnContext: true
+  validateInResponseTo: false,
+  disableRequestedAuthnContext: true
 }, function(profile, done) {
   return done(null, profile);
 });
