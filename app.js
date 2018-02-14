@@ -46,10 +46,10 @@ var samlStrategy = new saml.Strategy({
   privateCert: privateCert, // needs START END headers
   // Identity Provider's public key
   cert: idpCert,
-  signatureAlgorithm: 'sha256rsa',
+  signatureAlgorithm: 'sha256',
   //authnRequestBinding: 'HTTP-POST',
-  validateInResponseTo: false,
-  disableRequestedAuthnContext: true
+  //validateInResponseTo: false,
+  //disableRequestedAuthnContext: true
 }, function(profile, done) {
   return done(null, profile);
 });
