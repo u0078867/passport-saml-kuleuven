@@ -39,13 +39,10 @@ var samlStrategy = new saml.Strategy({
   issuer: process.env.ISSUER,
   identifierFormat: null,
   // Service Provider private key
-  //decryptionPvk: fs.readFileSync('key.pem', 'utf8'),
-  decryptionPvk: privateCert,
+  //decryptionPvk: privateCert,
   // Service Provider Certificate
-  //privateCert: fs.readFileSync('key.pem', 'utf8'),
-  privateCert: privateCert,
+  //privateCert: privateCert,
   // Identity Provider's public key
-  //cert: fs.readFileSync('idp_cert.pem', 'utf8'),
   cert: idpCert,
   //authnRequestBinding: 'HTTP-POST',
   validateInResponseTo: false,
