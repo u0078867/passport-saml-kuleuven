@@ -36,7 +36,7 @@ var samlStrategy = new saml.Strategy({
   // URL that goes from the Service Provider -> Identity Provider
   entryPoint: process.env.ENTRY_POINT,
   // Usually specified as `/shibboleth` from site root
-  //issuer: process.env.ISSUER,
+  issuer: process.env.ISSUER,
   identifierFormat: null,
   // Service Provider private key
   //decryptionPvk: fs.readFileSync('key.pem', 'utf8'),
