@@ -11,7 +11,7 @@
     "dotenv": "0.5.1",
     "express": "4.11.2",
     "express-session": "1.10.2",
-    "passport": "0.2.1",
-    "passport-saml": "0.9.0"
+    "passport": "^0.4.0",
+    "passport-saml": "^0.33.0"
   }
 }
