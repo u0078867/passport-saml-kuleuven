@@ -48,8 +48,8 @@ var samlStrategy = new saml.Strategy({
   cert: idpCert,
   //signatureAlgorithm: 'sha256',
   //authnRequestBinding: 'HTTP-POST',
-  //validateInResponseTo: false,
-  //disableRequestedAuthnContext: true
+  validateInResponseTo: false,
+  disableRequestedAuthnContext: true
 }, function(profile, done) {
   return done(null, profile);
 });
