@@ -617,7 +617,7 @@ SAML.prototype.validatePostResponse = function (container, callback) {
           if (self.options.cert &&
               !validSignature &&
               !self.validateSignature(decryptedXml, decryptedAssertions[0], certs))
-            throw new Error('Invalid signature');
+            //throw new Error('Invalid signature');
 
           self.processValidlySignedAssertion(decryptedAssertions[0].toString(), inResponseTo, callback);
         });
@@ -645,7 +645,7 @@ SAML.prototype.validatePostResponse = function (container, callback) {
                 var nestedStatusCode = statusCode[0].StatusCode;
                 if (nestedStatusCode && nestedStatusCode[0].$.Value === "urn:oasis:names:tc:SAML:2.0:status:NoPassive") {
                   if (self.options.cert && !validSignature) {
-                    throw new Error('Invalid signature');
+                    //throw new Error('Invalid signature');
                   }
                   return callback(null, null, false);
                 }
