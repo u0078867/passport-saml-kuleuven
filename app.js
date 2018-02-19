@@ -41,10 +41,10 @@ var samlStrategy = new saml.Strategy({
   // Service Provider private key
   decryptionPvk: privateCert,	// SP metadata will not show certificate if decryptionPvk not existing
   // Service Provider Certificate
-  //privateCert: privateCert, // needs START END headers
+  privateCert: privateCert, // needs START END headers
   // Identity Provider's public key
   cert: idpCert,
-  //signatureAlgorithm: 'sha256',
+  signatureAlgorithm: 'sha256',
   //authnRequestBinding: 'HTTP-POST',
   validateInResponseTo: false,
   disableRequestedAuthnContext: true
