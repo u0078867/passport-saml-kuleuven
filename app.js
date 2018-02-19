@@ -52,7 +52,7 @@ var samlStrategy = new saml.Strategy({
   let user = {
     id: profile['urn:mace:kuleuven.be:dir:attribute-def:KULAssocMigrateID'],
   };
-  return done(null, profile);
+  return done(null, user);
 });
 
 passport.use(samlStrategy);
