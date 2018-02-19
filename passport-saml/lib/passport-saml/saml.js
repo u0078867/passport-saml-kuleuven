@@ -497,6 +497,7 @@ SAML.prototype.validateSignature = function (fullXml, currentNode, certs) {
   if (signatures.length != 1)
     return false;
   var signature = signatures[0];
+  console.log(signature)
   return certs.some(function (certToCheck) {
     return self.validateSignatureForCert(signature, certToCheck, fullXml, currentNode);
   });
