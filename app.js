@@ -72,6 +72,7 @@ function ensureAuthenticated(req, res, next) {
 app.get('/',
   ensureAuthenticated,
   function(req, res) {
+    console.log(req.user)
     res.send('Authenticated');
   }
 );
