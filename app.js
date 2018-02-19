@@ -15,7 +15,7 @@ var privateCert = fs.readFileSync('key.pem', 'utf8');
 console.log(privateCert)
 var privateCert2 = fs.readFileSync('key2.pem', 'utf8').replace(/\r|\s|\n/g, '');
 
-var idpCert = fs.readFileSync('idp_cert.pem', 'utf8').replace(/\r|\s|\n/g, '');
+var idpCert = fs.readFileSync('idp_cert2.pem', 'utf8').replace(/\r|\s|\n/g, '');
 //var idpCert = fs.readFileSync('idp_cert.crt', 'utf8');
 console.log(idpCert)
 
