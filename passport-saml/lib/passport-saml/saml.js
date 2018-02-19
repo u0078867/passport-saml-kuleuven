@@ -511,6 +511,7 @@ SAML.prototype.validateSignatureForCert = function (signature, cert, fullXml, cu
       return "<X509Data></X509Data>";
     },
     getKey: function (keyInfo) {
+	  console.log(self.certToPEM(cert))
       return self.certToPEM(cert);
     }
   };
