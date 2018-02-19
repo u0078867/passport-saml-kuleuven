@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
-var saml = require('passport-saml');
+var saml = require('./passport-saml');
 
 dotenv.load();
 
@@ -44,7 +44,7 @@ var samlStrategy = new saml.Strategy({
   privateCert: privateCert, // needs START END headers
   // Identity Provider's public key
   cert: idpCert,
-  signatureAlgorithm: 'sha512',
+  signatureAlgorithm: 'sha256',
   //authnRequestBinding: 'HTTP-POST',
   validateInResponseTo: false,
   disableRequestedAuthnContext: true

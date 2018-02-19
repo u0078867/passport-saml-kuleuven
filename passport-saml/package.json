@@ -1,0 +1,132 @@
+{
+  "_args": [
+    [
+      "passport-saml@^0.33.0",
+      "C:\\Users\\u0078867\\Desktop\\KULeuvenJob\\test-kul-shibboleth\\test-passport-saml\\passport-saml-example"
+    ]
+  ],
+  "_from": "passport-saml@>=0.33.0 <0.34.0",
+  "_id": "passport-saml@0.33.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/passport-saml",
+  "_nodeVersion": "4.8.7",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/passport-saml_0.33.0_1518811345408_0.22022775066662725"
+  },
+  "_npmUser": {
+    "email": "mark@rideamigos.com",
+    "name": "markstos"
+  },
+  "_npmVersion": "2.15.11",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "passport-saml",
+    "raw": "passport-saml@^0.33.0",
+    "rawSpec": "^0.33.0",
+    "scope": null,
+    "spec": ">=0.33.0 <0.34.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/passport-saml/-/passport-saml-0.33.0.tgz",
+  "_shasum": "51b99f19dced56d246ee4e2887e32f06321fbecf",
+  "_shrinkwrap": null,
+  "_spec": "passport-saml@^0.33.0",
+  "_where": "C:\\Users\\u0078867\\Desktop\\KULeuvenJob\\test-kul-shibboleth\\test-passport-saml\\passport-saml-example",
+  "author": {
+    "email": "henri.bergius@iki.fi",
+    "name": "Henri Bergius",
+    "url": "http://bergie.iki.fi"
+  },
+  "bugs": {
+    "url": "https://github.com/bergie/passport-saml/issues"
+  },
+  "contributors": [
+    {
+      "name": "Michael Bosworth"
+    },
+    {
+      "name": "Herbert Vojčík"
+    },
+    {
+      "name": "Peter Loer"
+    },
+    {
+      "name": "Mark Stosberg"
+    }
+  ],
+  "dependencies": {
+    "passport-strategy": "*",
+    "q": "^1.5.0",
+    "xml-crypto": "^0.10.1",
+    "xml-encryption": "^0.11.0",
+    "xml2js": "0.4.x",
+    "xmlbuilder": "^9.0.4",
+    "xmldom": "0.1.x"
+  },
+  "description": "SAML 2.0 authentication strategy for Passport",
+  "devDependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.16.2",
+    "jshint": "*",
+    "mocha": "*",
+    "passport": "0.4.x",
+    "request": "^2.83.0",
+    "should": "*",
+    "sinon": "^2.1.0"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 29,
+    "shasum": "51b99f19dced56d246ee4e2887e32f06321fbecf",
+    "tarball": "https://registry.npmjs.org/passport-saml/-/passport-saml-0.33.0.tgz",
+    "unpackedSize": 371956
+  },
+  "engines": {
+    "node": ">= 4"
+  },
+  "gitHead": "2de3528f308f2103625b191c5b32432636f1592e",
+  "homepage": "https://github.com/bergie/passport-saml#readme",
+  "keywords": [
+    "saml",
+    "adfs",
+    "sso",
+    "shibboleth"
+  ],
+  "license": "MIT",
+  "main": "./lib/passport-saml",
+  "maintainers": [
+    {
+      "email": "henri.bergius@iki.fi",
+      "name": "bergie"
+    },
+    {
+      "email": "mark@rideamigos.com",
+      "name": "markstos"
+    },
+    {
+      "email": "pdspicer@gmail.com",
+      "name": "pdspicer"
+    },
+    {
+      "email": "ploer@acm.org",
+      "name": "ploer"
+    }
+  ],
+  "name": "passport-saml",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bergie/passport-saml.git"
+  },
+  "scripts": {
+    "jshint": "jshint lib",
+    "test": "mocha"
+  },
+  "version": "0.33.0"
+}
