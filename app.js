@@ -50,7 +50,7 @@ var samlStrategy = new saml.Strategy({
   disableRequestedAuthnContext: true
 }, function(profile, done) {
   let user = {
-    id: profile['urn:mace:kuleuven.be:dir:attribute-def:KULMoreUnifiedUID'],
+    id: profile['urn:mace:kuleuven.be:dir:attribute-def:KULAssocMigrateID'],
   };
   return done(null, profile);
 });
