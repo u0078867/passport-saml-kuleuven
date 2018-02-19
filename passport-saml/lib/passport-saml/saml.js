@@ -504,6 +504,7 @@ SAML.prototype.validateSignature = function (fullXml, currentNode, certs) {
 
 // This function checks that the |signature| is signed with a given |cert|.
 SAML.prototype.validateSignatureForCert = function (signature, cert, fullXml, currentNode) {
+  console.log("validateSignatureForCert");
   var self = this;
   var sig = new xmlCrypto.SignedXml();
   sig.keyInfoProvider = {
