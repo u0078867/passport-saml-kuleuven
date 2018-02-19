@@ -49,7 +49,10 @@ var samlStrategy = new saml.Strategy({
   validateInResponseTo: false,
   disableRequestedAuthnContext: true
 }, function(profile, done) {
-  return done(null, profile);
+  let user = {
+    id: profile['urn:mace:kuleuven.be:dir:attribute-def:KULMoreUnifiedUID'],
+  };
+  return done(null, user);
 });
 
 passport.use(samlStrategy);
