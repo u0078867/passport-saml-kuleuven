@@ -575,6 +575,7 @@ SAML.prototype.validatePostResponse = function (container, callback) {
   .then(function(certs) {
     // Check if this document has a valid top-level signature
     var validSignature = false;
+	console.log("validating toplevel ...")
     if (self.options.cert && self.validateSignature(xml, doc.documentElement, certs)) {
       validSignature = true;
     }
@@ -612,8 +613,9 @@ SAML.prototype.validatePostResponse = function (container, callback) {
           if (decryptedAssertions.length != 1)
             throw new Error('Invalid EncryptedAssertion content');
 
-		  console.log(validSignature)
-		  console.log(self.validateSignature(decryptedXml, decryptedAssertions[0], certs))
+		  //console.log(validSignature)
+		  //console.log(self.validateSignature(decryptedXml, decryptedAssertions[0], certs))
+		  console.log("validating decrypted ...")
           if (self.options.cert &&
               !validSignature &&
               !self.validateSignature(decryptedXml, decryptedAssertions[0], certs))
