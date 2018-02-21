@@ -113,7 +113,8 @@ app.get('/Shibboleth.sso/Metadata',
 //general error handler
 app.use(function(err, req, res, next) {
   console.log("Fatal error: " + JSON.stringify(err));
-  next(err);
+  //next(err);
+  res.status(500).send(err)
 });
 
 var server = app.listen(process.env.PORT, function () {

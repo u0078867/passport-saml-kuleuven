@@ -534,7 +534,9 @@ SAML.prototype.validateSignatureForCert = function (signature, cert, fullXml, cu
   if (totalReferencedNodes.length > 1)
     return false;
   console.log("checking signature....")
-  return sig.checkSignature(fullXml);
+  var ok = sig.checkSignature(fullXml);
+  console.log(sig.validationErrors)
+  return ok;
 };
 
 SAML.prototype.validatePostResponse = function (container, callback) {
@@ -576,6 +578,7 @@ SAML.prototype.validatePostResponse = function (container, callback) {
     // Check if this document has a valid top-level signature
     var validSignature = false;
 	console.log("validating toplevel ...")
+	//throw new Error(xml);
     if (self.options.cert && self.validateSignature(xml, doc.documentElement, certs)) {
       validSignature = true;
     }
