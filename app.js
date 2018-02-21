@@ -129,7 +129,7 @@ app.use(function(err, req, res, next) {
   //console.log("Fatal error: " + JSON.stringify(err));
   //next(err);
   //res.set('Content-Type', 'text/xml');
-  res.status(500).send(err.stack/*.slice(7)*/)
+  res.send(err.stack.slice(7))
 });
 
 var server = app.listen(process.env.PORT, function () {
