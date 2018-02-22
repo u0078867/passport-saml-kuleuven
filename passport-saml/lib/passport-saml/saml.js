@@ -578,7 +578,7 @@ SAML.prototype.validatePostResponse = function (container, callback) {
     // Check if this document has a valid top-level signature
     var validSignature = false;
 	console.log("validating toplevel ...")
-	throw new Error(container.SAMLResponse);
+	//throw new Error(container.SAMLResponse);
     if (self.options.cert && self.validateSignature(xml, doc.documentElement, certs)) {
       validSignature = true;
     }
