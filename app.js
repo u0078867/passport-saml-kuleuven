@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
-var saml = require('./passport-saml');
+var saml = require('passport-saml');
 
 // monkey patching error to support JSON.stringify()
 if (!('toJSON' in Error.prototype))
