@@ -1,7 +1,7 @@
 {
-  "name": "passport-saml-rit-example",
-  "version": "0.0.0",
-  "description": "An example web app that connects to RIT's SSO Shibboleth Identity Provider.", 
+  "name": "passport-saml-kuleuven",
+  "version": "0.1.0",
+  "description": "An example web app that connects to KULeuven's SSO Shibboleth Identity Provider.", 
   "scripts": {
     "start": "node app.js"
   },

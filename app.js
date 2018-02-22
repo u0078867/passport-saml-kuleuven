@@ -26,15 +26,9 @@ Object.defineProperty(Error.prototype, 'toJSON', {
 dotenv.load();
 
 var privateCert = fs.readFileSync('key.pem', 'utf8');
-console.log(privateCert)
-var privateCert2 = fs.readFileSync('key2.pem', 'utf8').replace(/\r|\s|\n/g, '');
-
 var idpCert = fs.readFileSync('idp_cert.pem', 'utf8').replace(/\r|\s|\n/g, '');
-//var idpCert = fs.readFileSync('idp_cert.crt', 'utf8');
-console.log(idpCert)
-
 var cert = fs.readFileSync('cert.pem', 'utf8');
-console.log(cert)
+
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -53,19 +47,20 @@ var samlStrategy = new saml.Strategy({
   issuer: process.env.ISSUER,
   identifierFormat: null,
   // Service Provider private key
-  decryptionPvk: privateCert,	// SP metadata will not show certificate if decryptionPvk not existing
+  decryptionPvk: privateCert,
   // Service Provider Certificate
-  privateCert: privateCert, // needs START END headers
+  privateCert: privateCert,
   // Identity Provider's public key
   cert: idpCert,
-  //signatureAlgorithm: 'sha256',
-  //authnRequestBinding: 'HTTP-POST',
   validateInResponseTo: false,
   disableRequestedAuthnContext: true
 }, function(profile, done) {
-  let user = {
+  /*let user = {
+	// Fill actual user with the properties you want
     id: profile['urn:mace:kuleuven.be:dir:attribute-def:KULAssocMigrateID'],
   };
+  return done(null, user);
+  */
   return done(null, profile);
 });
 
@@ -89,9 +84,7 @@ function ensureAuthenticated(req, res, next) {
 app.get('/',
   ensureAuthenticated,
   function(req, res) {
-    //console.log(req)
 	res.status(200).json(req.user)
-    //res.send('Authenticated');
   }
 );
 
@@ -118,17 +111,12 @@ app.get('/login/fail',
 app.get('/Shibboleth.sso/Metadata',
   function(req, res) {
     res.type('application/xml');
-    //res.status(200).send(samlStrategy.generateServiceProviderMetadata(fs.readFileSync(path.join(path.resolve(__dirname), 'cert/cert.pem'), 'utf8')));
 	res.status(200).send(samlStrategy.generateServiceProviderMetadata(cert));
-	//res.status(200).send(samlStrategy.generateServiceProviderMetadata(fs.readFileSync('cert.pem', 'utf8')));
   }
 );
 
-//general error handler
+// General error handler
 app.use(function(err, req, res, next) {
-  //console.log("Fatal error: " + JSON.stringify(err));
-  //next(err);
-  //res.set('Content-Type', 'text/xml');
   res.status(500).send(err)
 });
 
