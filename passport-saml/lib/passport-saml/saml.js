@@ -581,7 +581,7 @@ SAML.prototype.validatePostResponse = function (container, callback) {
     if (self.options.cert && self.validateSignature(xml, doc.documentElement, certs)) {
       validSignature = true;
     }
-	throw new Error(xml);
+	//throw new Error(xml);
 
     var assertions = xpath(doc, "/*[local-name()='Response']/*[local-name()='Assertion']");
     var encryptedAssertions = xpath(doc,
