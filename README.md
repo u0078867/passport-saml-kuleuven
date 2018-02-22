@@ -1,6 +1,6 @@
 # passport-saml-kuleuven
 
-This node.js web application demonstrates SSO authentication provided by LULeuven's Shibboleth Server, using the `passport-saml` package.
+This node.js web application demonstrates SSO authentication provided by KULeuven's Shibboleth Server, using the `passport-saml` package.
 
 # Config
 
