@@ -578,10 +578,10 @@ SAML.prototype.validatePostResponse = function (container, callback) {
     // Check if this document has a valid top-level signature
     var validSignature = false;
 	console.log("validating toplevel ...")
-	throw new Error(xml);
     if (self.options.cert && self.validateSignature(xml, doc.documentElement, certs)) {
       validSignature = true;
     }
+	throw new Error(xml);
 
     var assertions = xpath(doc, "/*[local-name()='Response']/*[local-name()='Assertion']");
     var encryptedAssertions = xpath(doc,
