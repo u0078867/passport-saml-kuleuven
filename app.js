@@ -92,8 +92,7 @@ app.get('/',
 app.get('/login',
   passport.authenticate('saml', { failureRedirect: '/login/fail' }),
   function (req, res) {
-    //res.redirect('/');
-    res.status(200).send(req.query.token);
+    res.redirect('/');
   }
 );
 
@@ -106,7 +105,13 @@ app.post('/login/callback',
     let token = jwt.sign(user, 'secret', {
       expiresIn: 1440 // expires in 1 hour
     });
-    res.redirect(`/login?token=${token}`);
+    res.redirect(`/authenticate?token=${token}`);
+  }
+);
+
+app.get('/authenticate',
+  function (req, res) {
+    res.status(200).send(req.query.token);
   }
 );
 
