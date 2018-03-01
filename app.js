@@ -9,6 +9,7 @@ var session = require('express-session');
 var passport = require('passport');
 var saml = require('passport-saml');
 var jwt = require('jsonwebtoken');
+var jwt_validate = require('express-jwt');
 
 // monkey patching error to support JSON.stringify()
 if (!('toJSON' in Error.prototype))
@@ -101,23 +102,32 @@ app.post('/login/callback',
   function(req, res) {
     //res.redirect('/');
     let user = req.user;
-    console.log(req.user);
-    let token = jwt.sign(user, 'secret', {
+    let token = jwt.sign(user, 'shhhhhhared-secret', {
       expiresIn: 1440 // expires in 1 hour
     });
     res.redirect(`/authenticate?token=${token}`);
   }
 );
 
+
+// this can be a client route
 app.get('/authenticate',
   function (req, res) {
-    res.status(200).send(req.query.token);
+    // client login page gets token and validates it via /validate-token
+    req.redirect(`/validate-token?token=${req.query.token}`)
   }
 );
 
 app.get('/login/fail',
   function(req, res) {
     res.status(401).send('Login failed');
+  }
+);
+
+app.get('/validate-token',
+  jwt_validate({secret: 'shhhhhhared-secret'}),
+  function(req, res) {
+    res.status(200).send('Token validated');
   }
 );
 
