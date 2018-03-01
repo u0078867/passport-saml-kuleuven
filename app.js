@@ -114,8 +114,8 @@ app.post('/login/callback',
 app.get('/authenticate',
   function (req, res) {
     // client login page gets token and validates it via /validate-token
-    res.header('Authorization', req.query.token)
-    res.redirect(`/validate-token?token=${req.query.token}`)
+    res.header('Authorization', `Bearer ${req.query.token}`);
+    res.redirect(`/validate-token`);
   }
 );
 
