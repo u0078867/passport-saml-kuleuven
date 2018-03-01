@@ -114,7 +114,7 @@ app.post('/login/callback',
 app.get('/authenticate',
   function (req, res) {
     // client login page gets token and validates it via /validate-token
-    req.redirect(`/validate-token?token=${req.query.token}`)
+    res.redirect(`/validate-token?token=${req.query.token}`)
   }
 );
 
@@ -134,7 +134,7 @@ app.get('/validate-token',
 app.get('/Shibboleth.sso/Metadata',
   function(req, res) {
     res.type('application/xml');
-	res.status(200).send(samlStrategy.generateServiceProviderMetadata(cert));
+    res.status(200).send(samlStrategy.generateServiceProviderMetadata(cert));
   }
 );
 
