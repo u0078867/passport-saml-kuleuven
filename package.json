@@ -1,7 +1,7 @@
 {
   "name": "passport-saml-kuleuven",
   "version": "0.1.0",
-  "description": "An example web app that connects to KULeuven's SSO Shibboleth Identity Provider.", 
+  "description": "An example web app that connects to KULeuven's SSO Shibboleth Identity Provider.",
   "scripts": {
     "start": "node app.js"
   },
@@ -11,6 +11,7 @@
     "dotenv": "0.5.1",
     "express": "4.11.2",
     "express-session": "1.10.2",
+    "jsonwebtoken": "^8.1.1",
     "passport": "^0.4.0",
     "passport-saml": "^0.33.0"
   }

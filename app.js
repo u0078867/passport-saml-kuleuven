@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
 var saml = require('passport-saml');
+var jwt = require('jsonwebtoken');
 
 // monkey patching error to support JSON.stringify()
 if (!('toJSON' in Error.prototype))
@@ -84,21 +85,28 @@ function ensureAuthenticated(req, res, next) {
 app.get('/',
   ensureAuthenticated,
   function(req, res) {
-	res.status(200).json(req.user)
+	   res.status(200).json(req.user)
   }
 );
 
 app.get('/login',
   passport.authenticate('saml', { failureRedirect: '/login/fail' }),
   function (req, res) {
-    res.redirect('/');
+    //res.redirect('/');
+    res.status(200).send(req.query.token);
   }
 );
 
 app.post('/login/callback',
-   passport.authenticate('saml', { failureRedirect: '/login/fail' }),
+  passport.authenticate('saml', { failureRedirect: '/login/fail' }),
   function(req, res) {
-    res.redirect('/');
+    //res.redirect('/');
+    let user = req.user;
+    console.log(req.user);
+    let token = jwt.sign(user, 'secret', {
+      expiresIn: 1440 // expires in 1 hour
+    });
+    res.redirect(`/login?token=${token}`);
   }
 );
 
