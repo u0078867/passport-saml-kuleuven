@@ -114,6 +114,7 @@ app.post('/login/callback',
 app.get('/authenticate',
   function (req, res) {
     // client login page gets token and validates it via /validate-token
+    // normally a token is passed via header `Authorization: Bearer <token>`
     res.redirect(`/validate-token?token=${req.query.token}`);
   }
 );
@@ -127,7 +128,10 @@ app.get('/login/fail',
 app.get('/validate-token',
   jwt_validate({secret: 'shhhhhhared-secret', getToken: (req) => req.query.token }),
   function(req, res) {
-    res.status(200).send('Token validated');
+    res.status(200).json({
+      token: 'validated',
+      user: req.user,
+    });
   }
 );
 
